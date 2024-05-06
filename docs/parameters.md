@@ -13,6 +13,14 @@ This parameter is used to specify the genome assembly of the input genotyping fi
 will all be in relation to hg38. If you supply genotypes from a different reference assembly specify one of the 
 following options `['hg18', 'hg19']` so the positions can be lifted over to hg38. The default value is `'hg38'`
 
+## --chunk_flag
+
+Set to `true` to divide the genetic files into smaller chunks (specified by `--chunk-size`), which allows us to run the analysis in parallel for increased efficiency.
+
+## --chunk_size
+
+Specify the chunk size used to split the genetic files.
+
 ## --covarfile
 
 This parameter is used to specify the path of the covariates to include in the model. Each subject to include in 
@@ -61,6 +69,25 @@ _Note:_ performing longitudinal analysis requires the inclusion of a `study_days
 phenotype. This variable should correspond to the timepoint (in days) since the start of the study at which the 
 measurement for the outcome was taken. Initial measurements taken at baseline will have a `study_days` of 0.
 
+## --mh_plot
+
+Set to `true` to produce a Manhattan Plot to visualise the results of the analysis.
+
+## --minor_allele_freq
+
+Set the maf threshold to filter out variants. For example, to filter out variants with maf<5%:
+```text
+minor_allele_freq: "0.05"
+```
+
+## --minor_allele_ct
+
+Set the mac threshold to filter out variants. For example, to filter out variants with mac<"20":
+
+```text
+minor_allele_ct: "20"
+```
+
 ## --model
 
 This parameter can be used to specify a custom model with higher order terms when the `--longitudinal_flag` is 
@@ -90,5 +117,13 @@ multiple outcome are present or if the column with the outcome does not have the
 
 This parameter is used to filter out imputed geneotypes of low quality if the input genotyping files include 
 imputed variants.
+
+## --study_col
+
+Specify the name of the study_arm column in the `--covarfile` (e.g. affected/unaffected/intermediate.
+
+## time_col
+
+Used for survival analyses: specify the column name in the `--phenofile` which contains the time-to-event information in days.
 
 
