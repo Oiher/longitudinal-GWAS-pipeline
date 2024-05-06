@@ -53,7 +53,7 @@ _Note:_ invoking sudo is not necessary if the Docker user has been previously ad
 
 ### Set YAML file parameters
 
-The cloned repository will contain a `params.yml` file where the parameters for the analysis can be set. Detailed descriptions of each parameter are present in the `Commandline parameters` section. Here is a breakdown 
+The cloned repository will contain a `params.yml` file where the parameters for the analysis can be set. Detailed descriptions of each parameter are present in the `Commandline parameters` section. There are five main sections to modify: 
 
 #### 1. Input files 
 
@@ -107,7 +107,7 @@ chunk_size:
 plink_chunk_size:
 ```
 
-#### Parameters for genetic QC
+#### 4. Parameters for genetic QC
 
 Here we specify the parameters for genetic QC, such as maf, ancestry, and assembly. For example:
 
@@ -122,7 +122,7 @@ assembly: "hg19"
 ```
 Detailed descriptions of each parameter can be found in the `Commandline parameters` section.
 
-#### Dataset name 
+#### 5. Dataset name 
 
 Finally, an identifier name can be given to the analysis, which will be used to name the cache and results folders. Additionally, the `mh_plot` flag can be set to `true` if we desire to produce Manhattan Plots to visualise the results.
 
