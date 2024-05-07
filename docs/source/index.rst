@@ -1,8 +1,3 @@
-.. rtd-test documentation master file, created by
-   sphinx-quickstart on Thu Sep 30 21:28:39 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 GWAS Pipeline for Longitudinal Analysis  using Nextflow + Docker
 ================================================================
 
