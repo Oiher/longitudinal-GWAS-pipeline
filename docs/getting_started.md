@@ -10,7 +10,7 @@ section.
 
 The pipeline requires the following software prerequisites and has been tested on a Linux Ubuntu 18.04 environment
 
-- Nextflow 
+- [Nextflow](https://www.nextflow.io/docs/latest/install.html) 
 - Docker
 - Java JRE 8
 
@@ -53,11 +53,11 @@ _Note:_ invoking sudo is not necessary if the Docker user has been previously ad
 
 ### Set YAML file parameters
 
-The cloned repository will contain a `params.yml` file where the parameters for the analysis can be set. Detailed descriptions of each parameter are present in the `Commandline parameters` section. There are five main sections to modify, as specified in the `Specify YAML file parameters` section: 
+The cloned repository will contain a `params.yml` file where the parameters for the analysis can be set. Detailed descriptions of each parameter are present in the [Commandline parameters](parameters.md) section. There are five main sections to modify, as specified in the [Set YAML file parameters](yml_params_setup.md) section: 
 
 1. `input files` 
-2. `variable names` 
-3.`model variables`
+2. `variable names`
+3. `model variables`
 4. `parameters for genetic QC`
 5. `dataset name`
 
