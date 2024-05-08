@@ -12,16 +12,15 @@ input: ./longitudinal-GWAS-pipeline/example/genotype/chr[1-3].vcf
 covarfile: ./longitudinal-GWAS-pipeline/example/covariates.tsv
 phenofile: ./example/phenotype.surv.tsv
 ```
-See `Input file formats` for more details on which variables need to be present in the `phenofile` and `covarfile`.
+See [Input file formats](file_formats.md) for more details on which variables must be present in the `phenofile` and `covarfile`.
 
 ## 2. Variable names
 
-Specify the variable names to be used in the analysis as they appear in the Input files.
+Specify the variable names to be used in the analysis as they appear in the input files.
 
 - `pheno_name`: the name of the independent variable, i.e. the outcome of interest
 - `covariates`: the covariates to be used, written in double quotes (`""`) and separated by spaces
 - `study_col`: the column in the `covarfile` where the study arm is specified (e.g. affected/unaffected/intermediate)
-For survival analyses, you must also specify the time-to-event column
 - `time_col`: the column in the `phenofile` where the time-to-event is defined
 
 For example, for a survival analysis using "Sex" and "Age at baseline" as covariates, we would specify the following:
@@ -67,7 +66,7 @@ kinship: "0.177"
 ancestry: "EUR"
 assembly: "hg19"
 ```
-Detailed descriptions of each parameter can be found in the `Commandline parameters` section.
+Detailed descriptions of each parameter can be found in the [Commandline parameters](parameters.md) section.
 
 ## 5. Dataset name 
 
