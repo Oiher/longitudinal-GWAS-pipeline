@@ -19,7 +19,6 @@ Visit the Getting Started page below or from the sidebar to see instructions for
    getting_started.md
    config.md
    parameters.md
-   yml_params_setup.md
    file_formats.md
    software.md
    examples.md
