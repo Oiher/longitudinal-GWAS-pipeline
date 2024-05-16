@@ -112,6 +112,10 @@ observation was taken. More specifically, this variable should represent the num
 
 This parameter can be used to specify the column in the `--phenofile` containing the outcome of interest. Additionally, longGWAS enables running the analysis using multiple outcomes simultaneously. If multiple outcomes are present, they must be passed in a comma-separated manner `y,y_2,z,z_2`.
 
+## --plink_chunk_size
+
+TBC
+
 ## --r2thres
 
 This parameter is used to filter out imputed genotypes of low quality if the input genotyping files include 
