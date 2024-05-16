@@ -65,7 +65,7 @@ sid-204	104.79350859619713	1095.75
 sid-204	91.52620016527872	1461.0
 ```
 
-For survival analyses, apart from the time-to-event column (`study_days`), a column must be present specifying whether the event outcome was reached (0/1), as shown here under `surv_y`. The columns `tstart` and `tend` are used to +++
+For survival analyses, apart from the time-to-event column (`study_days`), a column must be present specifying whether the event outcome was reached (0/1), as shown here under `surv_y`. 
 
 ```text
 IID	y	study_days	surv_y	tstart	tend
