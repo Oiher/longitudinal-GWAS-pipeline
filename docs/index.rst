@@ -17,7 +17,6 @@ Visit the Getting Started page below or from the sidebar to see instructions for
    :maxdepth: 2
 
    getting_started.md
-   nextflow_container.md
    config.md
    parameters.md
    yml_params_setup.md
