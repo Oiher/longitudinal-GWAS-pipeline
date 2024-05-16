@@ -4,20 +4,20 @@ This page will walk you through the process of building the docker image and set
 GWAS pipeline. If running this pipeline from ADWB, skip the installation section and go to the basic usage
 section.
 
-## Installation
+## Requirements
 
-### Requirements
+### Hardware
 
-#### Hardware
+The pipeline is meant to be run on a server with considerable resources, and it is not meant to be run on a local machine. 
 
-The pipeline is meant to be run on a server with considerable resources, and it is not meant to be run on a local machine. The minimum hardware specifications are:
+The minimum hardware specifications are:
 
 ```text
 4 CPUs
 12GB RAM
 ```
 
-#### Software
+### Software
 
 The pipeline requires the following software prerequisites and has been tested on a Linux Ubuntu 18.04 environment:
 
