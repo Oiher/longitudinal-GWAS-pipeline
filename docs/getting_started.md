@@ -31,7 +31,7 @@ You can install Nextflow following the instructions on the [Nextflow website](ht
 
 **3. Docker Desktop**
 
-You can install Docker Desktop for Windows, macOS, or Linux from the [Docker website](https://www.docker.com/products/docker-desktop/). To activate Docker Desktop for WSL2, follow these instructions from the [Docker documentation](https://docs.docker.com/desktop/wsl/). Once installed, check that it is installed properly by running `docker run hello-world`.
+You can install Docker Engine from the [Docker documentation](https://docs.docker.com/engine/install/). Once installed, check that it is installed properly by running `docker run hello-world`.
 
 **4. Git**
 
