@@ -16,7 +16,7 @@ The default longGWAS parameters are set to run a cross-sectional analysis. We ca
 nextflow run michael-ta/longitudinal-GWAS-pipeline -profile standard -r main
 ```
 
-The default parameters are specified in the `nextflow.config` file. To pass your own custom parameters, you can modify the above command using commandline parameters from the [Commandline parameters](parameters.md) section. For example:
+The default parameters are specified in the `nextflow.config` file (shown in the [Nextflow Configuration](config.md)) section. To pass your custom parameters, you can modify the above command using command line parameters from the [Commandline Parameters](parameters.md) section. For example:
 
 ```sh
 nextflow run michael-ta/longitudinal-GWAS-pipeline \
