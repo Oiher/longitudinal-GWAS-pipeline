@@ -19,7 +19,8 @@ Set to `true` to divide the genetic files into smaller chunks (specified by `--c
 
 ## --chunk_size
 
-Specify the chunk size used to split the genetic files.
+Specify the chunk size used to split the genetic files. The default value `30000`, meaning the genetic files will be split into chunks of 30000 SNPs.
+
 
 ## --covarfile
 
@@ -37,7 +38,7 @@ string of the column names to include in the model from the `--covarfile` option
 
 This parameter is used to specify an identifier for the input genotype files so that subsequent re-runs of the 
 pipeline can use cached results from the variant filtering and ancestry + outlier detection steps. The default
-value is `''` and it is highly recommended to set this parameter to avoid misusing cached results.
+value is null (`''`), and it is **highly recommended** to set this parameter to avoid misusing cached results.
 
 ## --input_vcf
 
@@ -53,6 +54,7 @@ Acceptable filenames
 --input_vcf "/path/to/dataset_prefix_chr*.vcf"
 --input_vcf "/path/to/dataset_chr*_suffix.vcf.gz"
 --input_vcf "/path/to/chr*.vcf"
+--input_vcf "/path/to/*chr[1-5].vcf"
 ```
 ## --kinship
 
@@ -70,7 +72,7 @@ measurement for the outcome was taken. Initial measurements taken at baseline wi
 
 ## --mh_plot
 
-Set to `true` to produce a Manhattan Plot to visualise the results of the analysis.
+Set to `true` to produce a Manhattan Plot to visualise the results of the analysis, as well as a QQ plot for diagnostic purposes.
 
 ## --minor_allele_freq
 
@@ -103,15 +105,12 @@ pipeline.
 This parameter is used to specify the path of the outcome file to do the association on. For cross-sectional 
 analysis, the pipeline expects data to be formatted in at least 2 columns, `IID` and `y`.
 
-For longitudinal analysis, a third column `study_days` represents the time point in the study that the 
-observation was taken. This variable should represent the number of days since the baseline 
-observation was taken in the study.
+For longitudinal analysis, a third column is required containing information about the time point in the study that the 
+observation was taken. More specifically, this variable should represent the number of days since the starting point of your analysis. The name of this variable should be passed using the `--time-col` flag.
 
 ## --pheno_name
 
-This parameter can be used to specify the column in the `--phenofile` containing the outcome of interest. If
-multiple outcomes are present, or if the column with the outcome does not have the header `y`,
-**incomplete**
+This parameter can be used to specify the column in the `--phenofile` containing the outcome of interest. Additionally, longGWAS enables running the analysis using multiple outcomes simultaneously. If multiple outcomes are present, they must be passed in a comma-separated manner `y,y_2,z,z_2`.
 
 ## --r2thres
 
@@ -120,7 +119,7 @@ imputed variants.
 
 ## --study_col
 
-Specify the name of the study_arm column in the `--covarfile` (e.g. affected/unaffected/intermediate).
+Specify the name of the study_arm column in the `--covarfile`.
 
 ## --time_col
 
