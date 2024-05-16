@@ -20,11 +20,11 @@ The default parameters are specified in the `nextflow.config` file (shown in the
 
 ```sh
 nextflow run michael-ta/longitudinal-GWAS-pipeline \
--chunk-size 60000 -minor_allele_freq '0.01' -dataset 'TEST_2' \
+--chunk_size 60000 --minor_allele_freq '0.01' --dataset 'TEST_2' \
 -profile standard -r main
 ```
 
-If you intent to customise multiple parameters, we recommend you modify the `params.yml` file and pass it using the `-params-file <params.yml>` command. The YAML file contains all the parameters from the [Commandline parameters](parameters.md) section which allows us to modify them in a more convenient fashion. For example, we can achieve the same result as the command above by changing the `chunk_size`, `minor_allele_freq`, and `dataset` parameters like so:
+If you intent to customise multiple parameters, we recommend you modify the `params.yml` file and pass it using the `-params-file <params.yml>` command. The YAML file contains all the parameters from the [Commandline parameters](parameters.md) section which allows us to modify them in a more convenient fashion. For example, we can achieve the same result as the command above by changing the `chunk_size`, `minor_allele_freq`, and `dataset` parameters, as indicated by the `->` symbol:
 
 ```bash
 # Input files
@@ -43,18 +43,18 @@ longitudinal_flag     = false
 survival_flag         = false
 linear_flag           = true
 chunk_flag            = true
-**chunk_size            = 60000**
+-> chunk_size            = 60000
 
 # Parameters for genetic QC
 r2thres               = -9
-**minor_allele_freq     = '0.01'**
+-> minor_allele_freq     = '0.01'
 minor_allele_ct       = '20'
 kinship               = '0.177'
 ancestry              = 'EUR'
 assembly              = 'hg19'
 
 # Identifier for the input genotype files - useful to cache results
-**dataset               = 'TEST_2'**
+-> dataset               = 'TEST_2'
 
 # Generate manhattan with result files
 mh_plot               = true
@@ -71,11 +71,11 @@ nextflow run michael-ta/longitudinal-GWAS-pipeline \
 
 ## Longitudinal analysis
 
-To run a longitudinal analysis, we will need to change the input `phenofile`, as well as activating the `longitudinal_flag`. We can do this by modifying these parameters in the Nextflow command:
+To run a longitudinal analysis, we will need to change the input `phenofile`, as well as activate the `longitudinal_flag`. We can do this by modifying these parameters in the Nextflow command:
 
 ```sh
 nextflow run michael-ta/longitudinal-GWAS-pipeline \
--phenofile "$PWD/example/phenotype.lt.tsv" -longitudinal_flag true -linear_flag false -dataset 'LONG' \
+--phenofile "$PWD/example/phenotype.lt.tsv" --longitudinal_flag true --dataset 'LONG' \
 -profile standard -r main
 ```
 
@@ -130,7 +130,7 @@ To run a survival analysis, we will need to change the input `phenofile`, as wel
 
 ```sh
 nextflow run michael-ta/longitudinal-GWAS-pipeline \
--phenofile "$PWD/example/phenotype.surv.tsv" -survival_flag true -linear_flag false -dataset 'SURV' \
+--phenofile "$PWD/example/phenotype.surv.tsv" --survival_flag true --dataset 'SURV' \
 -profile standard -r main
 ```
 
