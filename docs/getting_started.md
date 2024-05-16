@@ -38,7 +38,7 @@ nextflow run hello
 
 4. **Docker Desktop**
 
-You can install Docker Desktop for Windows, macOS, or Linux from the [Docker website](https://www.docker.com/products/docker-desktop/). To install Docker Desktop for Linux Ubuntu, follow these instructions from the [Docker documentation](https://docs.docker.com/desktop/install/ubuntu/). Once installed, check that it is installed properly by running `docker version`.
+You can install Docker Desktop for Windows, macOS, or Linux from the [Docker website](https://www.docker.com/products/docker-desktop/). To activate Docker Desktop for WSL2, follow these instructions from the [Docker documentation](https://docs.docker.com/desktop/wsl/). Once installed, check that it is installed properly by running `docker version`.
 
 5. **Git**
 
