@@ -1,8 +1,10 @@
 # Getting Started
 
-This page will walk you through the process of building the docker image and setting up Nextflow to run the 
-GWAS pipeline. If running this pipeline from ADWB, skip the installation section and go to the basic usage
-section.
+## Introduction
+
+longGWAS is a computational pipeline, developed using [Nextflow](https://www.nextflow.io/docs/latest/index.html), that allows us to perform custom GWAS analyses with ease.
+
+This page will walk you through how to set up Nextflow and run the longGWAS pipeline.
 
 ## Requirements
 
@@ -46,9 +48,10 @@ For a quick example of how to run Nextflow, we will download some example data f
 git clone https://github.com/AMCalejandro/testdata
 ```
 
-Then, we can run the Nextflow analysis with the default parameters using this command:
+Then, we can run the longGWAS analysis with the default parameters using these Nextflow commands:
 
 ```bash
 nextflow run michael-ta/longitudinal-GWAS-pipeline -profile standard -r main
 ```
 
+_Note_: To learn more about the Nextflow command line interface (CLI), please refer to the [Nextflow documentation](https://www.nextflow.io/docs/latest/cli.html).
