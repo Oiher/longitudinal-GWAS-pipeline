@@ -7,7 +7,7 @@ longitudinal GWAS pipeline
 ================================================================
 
 Documentation for the `longitudinal GWAS pipeline <https://github.com/michael-ta/longitudinal-GWAS-pipeline>`_
-project. This project aims to provide a reproducible and scalable solution to perform genome wide association
+project. This project aims to provide a reproducible and scalable solution to perform genome-wide association
 studies (GWAS) on longitudinal outcomes. The longGWAS computational pipeline was developed using `Nextflow <https://www.nextflow.io/docs/latest/index.html>`_ 
 for researchers to deploy and perform custom GWAS analyses with ease.
 
