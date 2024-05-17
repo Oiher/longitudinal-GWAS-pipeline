@@ -1,6 +1,6 @@
-# Commandline Parameters
+# Command line Parameters
 
-Users can specify the following parameters when running the Nextflow pipeline
+Users can specify the following parameters when running the longGWAS Nextflow pipeline:
 
 ## --ancestry
 
@@ -15,12 +15,11 @@ following options `['hg18', 'hg19']` so the positions can be lifted over to hg38
 
 ## --chunk_flag
 
-Set to `true` to divide the genetic files into smaller chunks (specified by `--chunk-size`), which allows us to run the analysis in parallel for increased efficiency.
+Set to `true` to divide the genetic files into smaller chunks (specified by `--chunk-size`), which allows us to run the QC steps in parallel for increased efficiency.
 
 ## --chunk_size
 
-Specify the chunk size used to split the genetic files. The default value `30000`, meaning the genetic files will be split into chunks of 30000 SNPs.
-
+Specify the chunk size used to split the genetic files for genetic QC. The default value `30000`, meaning the genetic files will be split into chunks of 30,000 SNPs.
 
 ## --covarfile
 
@@ -114,7 +113,7 @@ This parameter can be used to specify the column in the `--phenofile` containing
 
 ## --plink_chunk_size
 
-TBC
+Used to specify the chunk size to split the data for Plink analysis. This is only required for the Longitudinal and Survival analyses. The default value is `10000`, meaning the genetic files will be split into chunks of 10,000 SNPs.
 
 ## --r2thres
 
