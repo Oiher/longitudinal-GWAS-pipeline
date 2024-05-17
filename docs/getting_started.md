@@ -1,9 +1,5 @@
 # Getting Started
 
-## Introduction
-
-longGWAS is a computational pipeline, developed using [Nextflow](https://www.nextflow.io/docs/latest/index.html), that allows us to perform custom GWAS analyses with ease.
-
 This page will walk you through how to set up Nextflow and run the longGWAS pipeline.
 
 ## Requirements
