@@ -3,17 +3,15 @@
 Nextflow pipelines look for a configuration file `nextflow.config` at runtime to determine resource allocation and
 define any environment variables required for any process. The longitudinal GWAS pipeline 
 provides a default configuration file for users to manage resource allocation and define environment
-variables specifying the paths of the outputs and cache directory. In addition, this long-gwas default config file supports the use of cloud-based executors such as the Google Cloud batch (gcb) profile.
-To read more about Nextflow profiles please refer to the [Nextflow documentation](https://www.nextflow.io/docs/latest/config.html#config-profiles). Users can use the -C <config-file> option to use a custom configuration file and override the default long-gwas configuration.
+variables specifying the paths of the outputs and cache directory. Users can use the [`-C <config-file>` option](https://www.nextflow.io/docs/latest/cli.html#:~:text=Available%20options%3A-,%2DC,-Use%20the%20specified) to use a custom configuration file and override the default longGWAS configuration. In addition, the default longGWAS config file supports the use of cloud-based executors such as the Google Cloud batch (gcb) profile. To read more about Nextflow profiles please refer to the [Nextflow documentation](https://www.nextflow.io/docs/latest/config.html#config-profiles). 
 
-
-By default, each task is launched using the `gwas-pipeline` docker image and assigned 2 CPUs. The process labels
+By default, each task is launched using the `standard` profile. The process labels
 `small`, `medium`, and `large_mem` are used to manage resource allocation between 3 types of tasks within the pipeline. `small` tasks run in parallel, each with access to 2 CPUs and 6GB of working memory. This label is typically assigned to 
-the model fitting jobs. `medium` tasks have access to 4 CPUs with 12GB of working memory each. These tasks benefit 
+the model fitting jobs. `medium` and `large_mem` tasks have access to 4 CPUs with 12GB of working memory each. These tasks benefit 
 from access to multiple cores and are typically run consecutively to take advantage of the full capacity of the 
-compute resources.
+compute resources. When running on cloud-based profiles, such as `adwb` or `biowulf`, the `medium` and `large_mem` tasks will have access to more CPUs and RAM to take full advantage of the increased resources.
 
-Below is the default `nextflow.config` file used by the longitudinal GWAS pipeline
+Below is the default `nextflow.config` file used by the longitudinal GWAS pipeline, which includes the default longGWAS parameters (which can be customised using [Command line parameters](parameters.md)) and profile specifications:
 
 ```ini
 params {
@@ -33,6 +31,7 @@ params {
     linear_flag           = true
     chunk_flag            = true
     chunk_size            = 30000
+    plink_chunk_size      = 10000
 
     //# Parameters for genetic QC
     r2thres               = -9
