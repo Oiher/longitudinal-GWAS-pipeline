@@ -5,17 +5,17 @@
 The pipeline requires genotype information to be given in the form of uncompressed VCF or compressed VCF.gz 
 files.
 
-If missing variants have been imputed, specify the optional parameter `--r2thres` to filter out poorly imputed
-variants
+If you are working with imputed genotyping data, specify the optional parameter `--r2thres` to filter out poorly imputed
+variants.
 
 ## Input Covariates
 
-Covariates for each subject to be passed into the model can be provided via a tab-delimited file (\*.tsv)
+Covariates for each subject to be passed into the model can be provided via a tab-delimited file (\*.tsv).
 
 For both cross-sectional and longitudinal analysis, the pipeline expects covariates to be defined in the 
-following format
+following format:
 
-_Note:_ the Plink-style columns `#FID` and `PHENO` must be present but can be populated with `0`
+_Note:_ the Plink-style columns `#FID` and `PHENO` must be present but can be populated with `0`.
 
 ```text
 #FID  IID SEX PHENO study_arm apoe4 levodopa_usage age_at_baseline
