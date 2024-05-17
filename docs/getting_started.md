@@ -29,13 +29,13 @@ To use Nextflow, you will require a Java Runtime Environment (JRE) version 11 or
 
 You can install Nextflow following the instructions on the [Nextflow website](https://www.nextflow.io/docs/latest/install.html). Once installed, check that it is installed properly by running `nextflow run hello`.
 
-**3. Docker Desktop**
+**3. Docker**
 
 You can install Docker Engine from the [Docker documentation](https://docs.docker.com/engine/install/). Once installed, check that it is installed properly by running `docker run hello-world`.
 
 **4. Git**
 
-To clone the `testdata` repository, you will need to install [Git](https://github.com/git-guides/install-git) using `sudo apt-get install git-all`.
+We run the longGWAS pipeline hosted on GitHub at [michael-ta/longitudinal-GWAS-pipeline](https://github.com/michael-ta/longitudinal-GWAS-pipeline). Therefore, we will require [Git](https://github.com/git-guides/install-git) to be installed for Nextflow to pull the software from GitHub. Additionally, we have made available some [test data](https://github.com/AMCalejandro/testdata) on a separate GitHub repository, which can be cloned into your system using Git. To install Git, run `sudo apt-get install git-all`.
 
 
 ## Basic Usage
