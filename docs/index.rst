@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-longitudinal GWAS pipeline
+Longitudinal GWAS Pipeline (longGWAS)
 ================================================================
 
 Documentation for the `longitudinal GWAS pipeline <https://github.com/michael-ta/longitudinal-GWAS-pipeline>`_
