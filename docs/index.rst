@@ -3,13 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-GWAS Pipeline for Longitudinal Analysis  using Nextflow + Docker
+longitudinal GWAS pipeline
 ================================================================
 
 Documentation for the `longitudinal GWAS pipeline <https://github.com/michael-ta/longitudinal-GWAS-pipeline>`_
 project. This project aims to provide a reproducible and scalable solution to perform genome wide association
-studies (GWAS) on longitudinal outcomes. We have put together a Nextflow workflow and accompanying Docker image
-for researchers to deploy and use to analyze whole genome sequencing data.
+studies (GWAS) on longitudinal outcomes. The longGWAS computational pipeline was developed using [Nextflow](https://www.nextflow.io/docs/latest/index.html) 
+for researchers to deploy and perform custom GWAS analyses with ease.
 
 Visit the Getting Started page below or from the sidebar to see instructions for installation and basic usage.
 
