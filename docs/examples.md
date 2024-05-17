@@ -10,13 +10,13 @@ git clone https://github.com/AMCalejandro/testdata
 
 ## Cross-sectional analysis
 
-The default longGWAS parameters are set to run a cross-sectional analysis. We can perform this analysis by simply running:
+The default longGWAS parameters are set to run a cross-sectional analysis. We can perform this analysis by simply running the following [Nextflow command line arguments](https://www.nextflow.io/docs/latest/cli.html):
 
 ```sh
 nextflow run michael-ta/longitudinal-GWAS-pipeline -profile standard -r main
 ```
 
-The default parameters are specified in the `nextflow.config` file (shown in the [Nextflow Configuration](config.md)) section. To pass your custom parameters, you can modify the above command using command line parameters from the [Commandline Parameters](parameters.md) section. For example:
+The default parameters are specified in the `nextflow.config` file (shown in the [Nextflow Configuration](config.md)) section. To pass your custom parameters, you can modify the above command using command line parameters from the [Command line Parameters](parameters.md) section. For example:
 
 ```sh
 nextflow run michael-ta/longitudinal-GWAS-pipeline \
@@ -24,7 +24,7 @@ nextflow run michael-ta/longitudinal-GWAS-pipeline \
 -profile standard -r main
 ```
 
-If you intent to customise multiple parameters, we recommend you modify the `params.yml` file and pass it using the `-params-file <params.yml>` command. The YAML file contains all the parameters from the [Commandline parameters](parameters.md) section which allows us to modify them in a more convenient fashion. For example, we can achieve the same result as the command above by changing the `chunk_size`, `minor_allele_freq`, and `dataset` parameters, as indicated by the `->` symbol:
+If you intend to customise multiple parameters, we recommend you modify the `params.yml` file and pass it using the [`-params-file <params.yml>` argument](https://www.nextflow.io/docs/latest/cli.html#:~:text=inspecting%20the%20pipeline.-,%2Dparams%2Dfile,-Load%20script%20parameters). The YAML file contains all the parameters from the [Command line Parameters](parameters.md) section which allows us to modify them in a more convenient fashion. For example, we can achieve the same result as the command above by changing the `chunk_size`, `minor_allele_freq`, and `dataset` parameters, as indicated by the `->` symbol:
 
 ```bash
 # Input files
@@ -44,6 +44,7 @@ survival_flag         = false
 linear_flag           = true
 chunk_flag            = true
 -> chunk_size            = 60000
+plink_chunk_size      = 10000
 
 # Parameters for genetic QC
 r2thres               = -9
@@ -56,7 +57,7 @@ assembly              = 'hg19'
 # Identifier for the input genotype files - useful to cache results
 -> dataset               = 'TEST_2'
 
-# Generate manhattan with result files
+# Generate manhattan plot with result files
 mh_plot               = true
 }
 ```
@@ -71,7 +72,7 @@ nextflow run michael-ta/longitudinal-GWAS-pipeline \
 
 ## Longitudinal analysis
 
-To run a longitudinal analysis, we will need to change the input `phenofile`, as well as activate the `longitudinal_flag`. We can do this by modifying these parameters in the Nextflow command:
+To run a longitudinal analysis, we will need to change the input `phenofile`, as well as activate the `longitudinal_flag`. We can do this by specifying these parameters in the Nextflow command:
 
 ```sh
 nextflow run michael-ta/longitudinal-GWAS-pipeline \
@@ -79,7 +80,7 @@ nextflow run michael-ta/longitudinal-GWAS-pipeline \
 -profile standard -r main
 ```
 
-Alternatively, we can pass the `params.yml` file like so:
+Alternatively, we can pass the `params.yml` file using the `-params-file` option:
 
 ```sh
 nextflow run michael-ta/longitudinal-GWAS-pipeline \
@@ -93,7 +94,7 @@ With the following modified parameters:
 # Input files
 input                 = "$PWD/example/genotype/chr[1-3].vcf"
 covarfile             = "$PWD/example/covariates.tsv"
-**phenofile             = "$PWD/example/phenotype.lt.tsv"**
+-> phenofile             = "$PWD/example/phenotype.lt.tsv"
 
 # Variables names
 pheno_name            = 'y'
@@ -102,11 +103,12 @@ study_col             = 'study_arm'
 time_col              = 'study_days'
 
 # Model variables
-**longitudinal_flag     = true**
+-> longitudinal_flag     = true
 survival_flag         = false
-**linear_flag           = false**
+-> linear_flag           = false
 chunk_flag            = true
 chunk_size            = 30000
+plink_chunk_size      = 10000
 
 # Parameters for genetic QC
 r2thres               = -9
@@ -117,9 +119,9 @@ ancestry              = 'EUR'
 assembly              = 'hg19'
 
 # Identifier for the input genotype files - useful to cache results
-**dataset               = 'LONG'**
+-> dataset               = 'LONG'
 
-# Generate manhattan with result files
+# Generate manhattan plot with result files
 mh_plot               = true
 }
 ```
@@ -148,7 +150,7 @@ With the following modified parameters:
 # Input files
 input                 = "$PWD/example/genotype/chr[1-3].vcf"
 covarfile             = "$PWD/example/covariates.tsv"
-**phenofile             = "$PWD/example/phenotype.surv.tsv"**
+-> phenofile             = "$PWD/example/phenotype.surv.tsv"
 
 # Variables names
 pheno_name            = 'y'
@@ -158,10 +160,11 @@ time_col              = 'study_days'
 
 # Model variables
 longitudinal_flag     = false
-**survival_flag         = true**
-**linear_flag           = false**
+-> survival_flag         = true
+-> linear_flag           = false
 chunk_flag            = true
 chunk_size            = 30000
+plink_chunk_size      = 10000
 
 # Parameters for genetic QC
 r2thres               = -9
@@ -172,9 +175,9 @@ ancestry              = 'EUR'
 assembly              = 'hg19'
 
 # Identifier for the input genotype files - useful to cache results
-**dataset               = 'SURV'**
+-> dataset               = 'SURV'
 
-# Generate manhattan with result files
+# Generate manhattan plot with result files
 mh_plot               = true
 }
 ```
