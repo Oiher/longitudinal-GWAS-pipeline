@@ -91,7 +91,7 @@ process MANHATTAN {
   cohort_suffix = f"{cohort}.{suffix}" if suffix != "" else cohort
 
   # Prep data for plotting
-  df = pd.read_csv("${x}", sep="\t", engine='c')
+  df = pd.read_csv("${x}", sep="\\t", engine='c')
   df = df.dropna(how="any", axis=0)  # clean data
   df['chr_order'] = df['#CHROM'].str.replace('chr', '')
   df['chr_order'] = df['chr_order'].astype(int)
