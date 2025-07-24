@@ -1,43 +1,9 @@
 #!/usr/bin/env nextflow 
 
-
 /*
  * Enables modules
  */
 nextflow.enable.dsl = 2
-
-
-/*
- * Default pipeline parameters. 
- * To override these, we are going to use the params.yml file 
- */
-params.input = "data/*"
-params.dataset = ""
-params.ancestry = "EUR"
-params.assembly = "hg38"
-params.out = ""
-params.r2thres = -9
-params.chunk_size = 30000
-params.plink_chunk_size = 20000
-
-params.covarfile = ""
-params.study_col = "study_arm"
-params.time_col = "study_days"
-params.minor_allele_freq = "0.05"
-params.minor_allele_ct = "20"
-params.kinship = "0.177"
-
-params.model = ""
-params.pheno_name = ""
-params.pheno_name_file = ""
-params.covariates = "SEX PC1 PC2 PC3"
-params.phenofile = ""
-
-params.longitudinal_flag = false
-params.survival_flag = false
-params.linear_flag = false
-params.chunk_flag = false
-params.mh_plot = false
 
 
 /*
@@ -52,6 +18,7 @@ else if ( params.survival_flag ) {
 else {
     MODEL = "glm"
 }
+
 
 log.info """\
  LONG-GWAS - GWAS P I P E L I N E
@@ -68,13 +35,12 @@ log.info """\
  outdir                                   : ${PWD}/files/longGWAS_pipeline/results/cache/${params.dataset}
  """
 
- 
+
 /*
  * Datetime
  */
 datetime = new java.util.Date()
 params.datetime = new java.text.SimpleDateFormat("YYYY-MM-dd'T'HHMMSS").format(datetime)
-
 
 /* 
  * Import modules
@@ -108,10 +74,11 @@ Channel
     .collect()
     .set{ phenonames }
 
+
 /* 
  * main script flow
  */
-workflow {
+workflow GWAS {
   
   DOQC( input_check_ch, cache )
 
@@ -124,3 +91,4 @@ workflow {
 
   SAVE_RESULTS(GWAS_RUN.out, MODEL)
 }
+
