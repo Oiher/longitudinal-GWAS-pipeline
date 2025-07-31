@@ -2,6 +2,7 @@
 .nextflow/cache/
 work/
 files/
+.nextflow.log*
 
 # add DS_store
 .DS_Store
