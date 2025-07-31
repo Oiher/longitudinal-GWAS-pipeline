@@ -1,3 +1,8 @@
+# Ignore cache and work files
+.nextflow/cache/
+work/
+files/
+
 # add DS_store
 .DS_Store
 

@@ -13,9 +13,10 @@ process GALLOPCOX_INPUT {
   //  params.longitudinal_flag || params.survival_flag
   
   script:
+  def file = plink_input.getName()
+  log.info "Processing chromosome: ${chrname} with input file: ${file}"
     """
     #!/usr/bin/env python3
-    print(f"Processing chromosome {chrname} for GALLOPCOX_INPUT")
     fn = "${plink_input}"
     out_fn = "allchr_${params.dataset}_p2in.txt"
     count = 0

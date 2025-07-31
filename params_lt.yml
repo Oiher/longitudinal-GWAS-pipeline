@@ -1,8 +1,8 @@
 ---
 # Input files
-input: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/example/genotype/chr[1-3].vcf
-covarfile: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/example/covariates.tsv
-phenofile: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/example/phenotype.lt.tsv
+input: ${projectDir}/example/genotype/chr[1-3].vcf
+covarfile: ${projectDir}/example/covariates.tsv
+phenofile: ${projectDir}/example/phenotype.lt.tsv
 
 #Variables names
 pheno_name: y
