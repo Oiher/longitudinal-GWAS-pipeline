@@ -1,9 +1,0 @@
-+ KEY=EUR_affected_y
-+ glm_phenocovar.py --pheno_covar /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/35/bed8dcbbadf9f3421719b060a2c847/EUR_affected_analyzed.tsv --phenname y --covname 'SEX age_at_baseline'
-+ plink2 --pfile chr3 --glm hide-covar omit-ref cols=+beta,+a1freq --pheno pheno.tsv --pheno-name y --covar covar.tsv --covar-name SEX,age_at_baseline --covar-variance-standardize --keep pheno.tsv --output-chr chrM --mac 20 --hwe 1e-6 --threads 4 --memory 12288 --out EUR_affected_chr3.null
-+ set +u
-+ set +e
-+ cd /tmp/nxf.y1sajBxhGL
-+ echo ''
-+ echo KEY=EUR_affected_y
-+ echo /KEY/

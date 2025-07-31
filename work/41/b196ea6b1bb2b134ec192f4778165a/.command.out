@@ -1,5 +1,0 @@
-Found 256 subjects
-Running GALLOP algorithm
-Fitting base model: y ~ SEX + age_at_baseline + time
-Fitting base model with phenotype: y
-GALLOP: blup calculated

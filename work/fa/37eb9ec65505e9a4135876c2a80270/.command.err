@@ -1,8 +1,0 @@
-+ KEY=EUR_control_surv_y
-+ survival.R --rawfile EUR_control_chr2_chr2:151464:T:C_chr2:242059222:T:C.raw --pheno phenotypes.tsv --covar EUR_control_filtered.pca.tsv --covar-name 'SEX age_at_baseline' --pheno-name surv_y --out EUR_control_chr2_chr2:151464:T:C_chr2:242059222:T:C.null.coxph
-+ set +u
-+ set +e
-+ cd /tmp/nxf.NSxWv89ib1
-+ echo ''
-+ echo KEY=EUR_control_surv_y
-+ echo /KEY/
