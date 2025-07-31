@@ -30,7 +30,7 @@ process GETPHENOS {
 process REMOVEOUTLIERS {
   scratch true
   label 'medium'
-  storeDir "${STORE_DIR}/${params.dataset}/p3_COVARIATES_QC/${params.out}"
+  storeDir "${params.STORE_DIR}/${params.dataset}/p3_COVARIATES_QC/${params.out}"
 
   input:
     path samplelist //from p2_qc_processed
@@ -45,6 +45,8 @@ process REMOVEOUTLIERS {
     #!/usr/bin/env python3
     import pandas as pd
     import time
+
+    print(f"Processing cohort ${cohort} for ancestry ${params.ancestry}")
 
     ancestry = "${params.ancestry}"
     study_id_colname = "${params.study_col}"

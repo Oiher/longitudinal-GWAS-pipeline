@@ -1,0 +1,9 @@
++ KEY=EUR_control_y
++ glm_phenocovar.py --pheno_covar /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/4f/c07f4ec3e2ec6a8c65bc46da6e27c7/EUR_control_analyzed.tsv --phenname y --covname 'SEX age_at_baseline'
++ plink2 --pfile chr2 --glm hide-covar omit-ref cols=+beta,+a1freq --pheno pheno.tsv --pheno-name y --covar covar.tsv --covar-name SEX,age_at_baseline --covar-variance-standardize --keep pheno.tsv --output-chr chrM --mac 20 --hwe 1e-6 --threads 4 --memory 12288 --out EUR_control_chr2.null
++ set +u
++ set +e
++ cd /tmp/nxf.bjqSFXxXq0
++ echo ''
++ echo KEY=EUR_control_y
++ echo /KEY/

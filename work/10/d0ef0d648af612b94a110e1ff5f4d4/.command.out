@@ -1,0 +1,30 @@
+PLINK v1.90b6.24 64-bit (6 Jun 2021)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to chr4.log.
+Options in effect:
+  --merge-list chr4.mergelist.txt
+  --out chr4
+
+15696 MB RAM detected; reserving 7848 MB for main workspace.
+Performing single-pass merge (808 people, 1560 variants).
+                                              Merged fileset written to chr4.bed + chr4.bim + chr4.fam .
+PLINK v2.00a3LM 64-bit Intel (20 Sep 2021)     www.cog-genomics.org/plink/2.0/
+(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to chr4.log.
+Options in effect:
+  --bfile chr4
+  --make-pgen
+  --out chr4
+  --sort-vars
+
+Start time: Thu Jul 31 12:51:59 2025
+15696 MiB RAM detected; reserving 7848 MiB for main workspace.
+Using up to 22 threads (change this with --threads).
+808 samples (0 females, 0 males, 808 ambiguous; 808 founders) loaded from
+chr4.fam.
+1560 variants loaded from chr4.bim.
+Note: No phenotype data present.
+Writing chr4.pvar ... 0%done.
+Writing chr4.psam ... done.
+Writing chr4.pgen ... 0%done.
+End time: Thu Jul 31 12:51:59 2025

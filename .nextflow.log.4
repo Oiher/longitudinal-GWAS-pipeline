@@ -1,0 +1,272 @@
+Jul-31 14:02:45.443 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_testing.nf -c nextflow_testing.config -params-file params_cs.yml -profile standard -ansi-log false
+Jul-31 14:02:45.590 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.6
+Jul-31 14:02:45.616 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/oiher/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4,nf-wave@1.12.1
+Jul-31 14:02:45.648 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-31 14:02:45.649 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-31 14:02:45.653 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jul-31 14:02:45.669 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-31 14:02:45.701 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/nextflow.config
+Jul-31 14:02:45.705 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/nextflow_testing.config
+Jul-31 14:02:45.712 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/nextflow.config
+Jul-31 14:02:45.713 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/nextflow_testing.config
+Jul-31 14:02:45.763 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/oiher/.nextflow/secrets/store.json
+Jul-31 14:02:45.767 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@29be7749] - activable => nextflow.secret.LocalSecretsProvider@29be7749
+Jul-31 14:02:45.819 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jul-31 14:02:46.638 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jul-31 14:02:46.759 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jul-31 14:02:46.771 [main] INFO  nextflow.cli.CmdRun - Launching `main_testing.nf` [hopeful_swanson] DSL2 - revision: d613680f7c
+Jul-31 14:02:46.773 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-31 14:02:46.773 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-31 14:02:46.826 [main] DEBUG nextflow.Session - Session UUID: a22e28c1-9839-4c27-ab4b-27ba2af1bee1
+Jul-31 14:02:46.827 [main] DEBUG nextflow.Session - Run name: hopeful_swanson
+Jul-31 14:02:46.827 [main] DEBUG nextflow.Session - Executor pool size: 22
+Jul-31 14:02:46.836 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-31 14:02:46.841 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=66; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-31 14:02:46.865 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.6 build 5954
+  Created: 01-07-2025 11:27 UTC (12:27 BST)
+  System: Linux 6.6.87.2-microsoft-standard-WSL2
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 21.0.7+6-LTS
+  Encoding: UTF-8 (UTF-8)
+  Process: 67898@OSA-G16 [127.0.1.1]
+  CPUs: 22 - Mem: 15.3 GB (11.1 GB) - Swap: 4 GB (4 GB)
+Jul-31 14:02:46.889 [main] DEBUG nextflow.Session - Work-dir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work [ext2/ext3]
+Jul-31 14:02:46.928 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-31 14:02:46.937 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-31 14:02:46.940 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Jul-31 14:02:46.964 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-31 14:02:46.986 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 23; maxThreads: 1000
+Jul-31 14:02:47.051 [main] DEBUG nextflow.Session - Session start
+Jul-31 14:02:47.177 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-31 14:02:48.586 [main] INFO  nextflow.Nextflow -   LONG-GWAS - GWAS P I P E L I N E
+  ======================================
+  Chunk size for genetic processing        : 60000
+  Kinship matrix threshold                 : 0.177
+  R2 threshold                             : -9
+  MAF threshold                            : 0.05
+  data ancestry                            : EUR
+  genetic data assemble                    : hg19
+  phenotype name                           : y
+  covariates                               : SEX age_at_baseline
+  analysis                                 : glm
+  outdir                                   : /home/oiher/longGWAS/longitudinal-GWAS-pipeline/files/longGWAS_pipeline/results/cache/GLM_CS
+  
+Jul-31 14:02:48.749 [main] INFO  nextflow.Nextflow - Fetching input files and cache...
+Jul-31 14:02:48.926 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:medium` matches labels `medium` for process with name LONGWAS:GWAS:DOQC:GENETICQC
+Jul-31 14:02:48.936 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-31 14:02:48.936 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-31 14:02:48.941 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jul-31 14:02:48.947 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=22; memory=15.3 GB; capacity=22; pollInterval=100ms; dumpInterval=5m
+Jul-31 14:02:48.949 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Jul-31 14:02:48.969 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'LONGWAS:GWAS:DOQC:GENETICQC': maxForks=0; fair=false; array=0
+Jul-31 14:02:49.021 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:small` matches labels `small` for process with name LONGWAS:GWAS:DOQC:MERGER_SPLITS
+Jul-31 14:02:49.023 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-31 14:02:49.023 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-31 14:02:49.024 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'LONGWAS:GWAS:DOQC:MERGER_SPLITS': maxForks=0; fair=false; array=0
+Jul-31 14:02:49.053 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:large_mem` matches labels `large_mem` for process with name LONGWAS:GWAS:DOQC:MERGER_CHRS
+Jul-31 14:02:49.056 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-31 14:02:49.056 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-31 14:02:49.057 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'LONGWAS:GWAS:DOQC:MERGER_CHRS': maxForks=0; fair=false; array=0
+Jul-31 14:02:49.069 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:large_mem` matches labels `large_mem` for process with name LONGWAS:GWAS:DOQC:GWASQC
+Jul-31 14:02:49.070 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-31 14:02:49.070 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-31 14:02:49.071 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'LONGWAS:GWAS:DOQC:GWASQC': maxForks=0; fair=false; array=0
+Jul-31 14:02:49.077 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:small` matches labels `small` for process with name LONGWAS:GWAS:GWASDATA_PREP:GETPHENOS
+Jul-31 14:02:49.079 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-31 14:02:49.080 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-31 14:02:49.082 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'LONGWAS:GWAS:GWASDATA_PREP:GETPHENOS': maxForks=0; fair=false; array=0
+Jul-31 14:02:49.096 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:medium` matches labels `medium` for process with name LONGWAS:GWAS:GWASDATA_PREP:REMOVEOUTLIERS
+Jul-31 14:02:49.100 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-31 14:02:49.101 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-31 14:02:49.103 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'LONGWAS:GWAS:GWASDATA_PREP:REMOVEOUTLIERS': maxForks=0; fair=false; array=0
+Jul-31 14:02:49.104 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [2]
+Jul-31 14:02:49.122 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:large_mem` matches labels `large_mem` for process with name LONGWAS:GWAS:GWASDATA_PREP:COMPUTE_PCA
+Jul-31 14:02:49.126 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-31 14:02:49.126 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-31 14:02:49.128 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'LONGWAS:GWAS:GWASDATA_PREP:COMPUTE_PCA': maxForks=0; fair=false; array=0
+Jul-31 14:02:49.129 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [0]
+Jul-31 14:02:49.135 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:small` matches labels `small` for process with name LONGWAS:GWAS:GWASDATA_PREP:MERGE_PCA
+Jul-31 14:02:49.136 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-31 14:02:49.136 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-31 14:02:49.137 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'LONGWAS:GWAS:GWASDATA_PREP:MERGE_PCA': maxForks=0; fair=false; array=0
+Jul-31 14:02:49.144 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:small` matches labels `small` for process with name LONGWAS:GWAS:GWASDATA_PREP:EXPORT_PLINK
+Jul-31 14:02:49.147 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-31 14:02:49.147 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-31 14:02:49.148 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'LONGWAS:GWAS:GWASDATA_PREP:EXPORT_PLINK': maxForks=0; fair=false; array=0
+Jul-31 14:02:49.173 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:medium` matches labels `medium` for process with name LONGWAS:GWAS:GWAS_RUN:GWASGLM
+Jul-31 14:02:49.175 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-31 14:02:49.175 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-31 14:02:49.176 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'LONGWAS:GWAS:GWAS_RUN:GWASGLM': maxForks=0; fair=false; array=0
+Jul-31 14:02:49.177 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1, 2]
+Jul-31 14:02:49.187 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-31 14:02:49.187 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-31 14:02:49.188 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'LONGWAS:GWAS:SAVE_RESULTS:SAVEGWAS': maxForks=0; fair=false; array=0
+Jul-31 14:02:49.192 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: LONGWAS:GWAS:GWAS_RUN:GWASGLM, MERGER_CHRS, GWASGALLOP, GWASCPH, LONGWAS:GWAS:DOQC:MERGER_CHRS, GALLOPCOX_INPUT, LONGWAS:GWAS:GWASDATA_PREP:REMOVEOUTLIERS, GENETICQC, RAWFILE_EXPORT, LONGWAS:GWAS:SAVE_RESULTS:SAVEGWAS, EXPORT_PLINK, MANHATTAN, MERGE_PCA, LONGWAS:GWAS:DOQC:GWASQC, GWASQC, LONGWAS:GWAS:DOQC:MERGER_SPLITS, LONGWAS:GWAS:GWASDATA_PREP:GETPHENOS, LONGWAS:GWAS:GWASDATA_PREP:MERGE_PCA, MERGER_SPLITS, GETPHENOS, GWASGLM, LONGWAS:GWAS:GWASDATA_PREP:COMPUTE_PCA, REMOVEOUTLIERS, LONGWAS:GWAS:GWASDATA_PREP:EXPORT_PLINK, LONGWAS:GWAS:DOQC:GENETICQC, SAVEGWAS, COMPUTE_PCA
+Jul-31 14:02:49.194 [main] DEBUG nextflow.Session - Igniting dataflow network (17)
+Jul-31 14:02:49.211 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:DOQC:GENETICQC
+Jul-31 14:02:49.212 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:DOQC:MERGER_SPLITS
+Jul-31 14:02:49.212 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:DOQC:MERGER_CHRS
+Jul-31 14:02:49.212 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:DOQC:GWASQC
+Jul-31 14:02:49.214 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/files/longGWAS_pipeline/results/cache/GLM_CS/p1_run_cache/; pattern: *; options: [:]
+Jul-31 14:02:49.215 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:GWASDATA_PREP:GETPHENOS
+Jul-31 14:02:49.215 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:GWASDATA_PREP:REMOVEOUTLIERS
+Jul-31 14:02:49.215 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:GWASDATA_PREP:REMOVEOUTLIERS
+Jul-31 14:02:49.216 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:GWASDATA_PREP:COMPUTE_PCA
+Jul-31 14:02:49.216 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:GWASDATA_PREP:COMPUTE_PCA
+Jul-31 14:02:49.216 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:GWASDATA_PREP:MERGE_PCA
+Jul-31 14:02:49.216 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:GWASDATA_PREP:EXPORT_PLINK
+Jul-31 14:02:49.216 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:GWAS_RUN:GWASGLM
+Jul-31 14:02:49.216 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:GWAS_RUN:GWASGLM
+Jul-31 14:02:49.216 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > LONGWAS:GWAS:SAVE_RESULTS:SAVEGWAS
+Jul-31 14:02:49.217 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_2275fd8c9aa3055b: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/modules/gwasprep/outliers_exclude.nf
+  Script_ac9f23526ef01700: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/subworkflows/rungwas.nf
+  Script_4ce33124a6318d54: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/modules/gwasprep/gallopcph_in.nf
+  Script_b85cc2f0a3d91e65: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/modules/gwasrun/gallop.nf
+  Script_d938e0f8680d3b9d: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/modules/gwasrun/glm.nf
+  Script_a862f694a08706fa: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/modules/gwasqc/main.nf
+  Script_1d83cb9993a3607a: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/subworkflows/fullqc.nf
+  Script_862d9c7a66760f08: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/modules/geneticqc/merge.nf
+  Script_5048a83d85df4d47: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/modules/gwasrun/cph.nf
+  Script_5d22545d0a0a4c7b: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/modules/gwasprep/raw.nf
+  Script_08dfa6f235c20f3b: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/subworkflows/saveresults.nf
+  Script_9118c7a2765a440c: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/modules/gwasprep/covars.nf
+  Script_8d4272984a9913ac: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/main_testing.nf
+  Script_f6a92028100610eb: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/subworkflows/gwasinputs.nf
+  Script_615d6f3db239ddbc: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/workflows/gwas_testing.nf
+  Script_19eff52c307a3f80: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/modules/resultsout/gwasfiles.nf
+  Script_1bece1afd4981c20: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/modules/resultsout/manhattan.nf
+  Script_1292cceb6d2dc38c: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/modules/geneticqc/qc.nf
+Jul-31 14:02:49.217 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-31 14:02:49.217 [main] DEBUG nextflow.Session - Session await
+Jul-31 14:02:49.230 [PathVisitor-2] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/example/genotype/; pattern: chr[4-6].vcf; options: [:]
+Jul-31 14:02:49.269 [Actor Thread 23] DEBUG nextflow.file.SortFileCollector - FileCollector temp dir not removed: null
+Jul-31 14:02:49.464 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:02:49.467 [Task submitter] INFO  nextflow.Session - [8c/8ca7de] Submitted process > LONGWAS:GWAS:GWASDATA_PREP:GETPHENOS
+Jul-31 14:02:49.500 [Actor Thread 23] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 24; slices: 1; internal sort time: 0.035 s; external sort time: 0.014 s; total time: 0.049 s
+Jul-31 14:02:49.511 [Actor Thread 23] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/collect-file/2dceef0ca08339a189bec4538d31736a
+Jul-31 14:02:49.525 [Actor Thread 23] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-770346514896937077
+Jul-31 14:02:49.539 [Actor Thread 22] INFO  nextflow.processor.TaskProcessor - [skipping] Stored process > LONGWAS:GWAS:DOQC:MERGER_CHRS (1)
+Jul-31 14:02:49.550 [Actor Thread 22] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `datetime` -- Initialise it to a default value eg. `params.datetime = some_value`
+Jul-31 14:02:49.561 [Actor Thread 16] INFO  nextflow.processor.TaskProcessor - [skipping] Stored process > LONGWAS:GWAS:DOQC:GWASQC (1)
+Jul-31 14:02:49.566 [Actor Thread 22] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=66; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-31 14:02:55.023 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: LONGWAS:GWAS:GWASDATA_PREP:GETPHENOS; status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/8c/8ca7de35407d087208e3418d9d827c]
+Jul-31 14:02:55.024 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=66; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-31 14:02:55.060 [Actor Thread 19] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `out` -- Initialise it to a default value eg. `params.out = some_value`
+Jul-31 14:02:55.062 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [skipping] Stored process > LONGWAS:GWAS:GWASDATA_PREP:REMOVEOUTLIERS (3)
+Jul-31 14:02:55.062 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [skipping] Stored process > LONGWAS:GWAS:GWASDATA_PREP:REMOVEOUTLIERS (1)
+Jul-31 14:02:55.063 [Actor Thread 22] INFO  nextflow.processor.TaskProcessor - [skipping] Stored process > LONGWAS:GWAS:GWASDATA_PREP:REMOVEOUTLIERS (2)
+Jul-31 14:02:55.075 [Actor Thread 22] INFO  nextflow.Nextflow - Running PCA for EUR_intermediate_filtered.tsv
+Jul-31 14:02:55.075 [Actor Thread 18] INFO  nextflow.Nextflow - Running PCA for EUR_control_filtered.tsv
+Jul-31 14:02:55.076 [Actor Thread 16] INFO  nextflow.Nextflow - Running PCA for EUR_affected_filtered.tsv
+Jul-31 14:02:55.094 [Actor Thread 16] INFO  nextflow.processor.TaskProcessor - [skipping] Stored process > LONGWAS:GWAS:GWASDATA_PREP:COMPUTE_PCA (1)
+Jul-31 14:02:55.094 [Actor Thread 22] INFO  nextflow.processor.TaskProcessor - [skipping] Stored process > LONGWAS:GWAS:GWASDATA_PREP:COMPUTE_PCA (3)
+Jul-31 14:02:55.094 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [skipping] Stored process > LONGWAS:GWAS:GWASDATA_PREP:COMPUTE_PCA (2)
+Jul-31 14:02:55.158 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:02:55.159 [Task submitter] INFO  nextflow.Session - [c2/6326eb] Submitted process > LONGWAS:GWAS:GWASDATA_PREP:MERGE_PCA (3)
+Jul-31 14:02:55.194 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:02:55.195 [Task submitter] INFO  nextflow.Session - [5c/949a9a] Submitted process > LONGWAS:GWAS:GWASDATA_PREP:MERGE_PCA (2)
+Jul-31 14:03:00.341 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 11; name: LONGWAS:GWAS:GWASDATA_PREP:MERGE_PCA (2); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/5c/949a9a495d5117a0ec89f1e8300489]
+Jul-31 14:03:00.346 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:00.348 [Task submitter] INFO  nextflow.Session - [72/72628e] Submitted process > LONGWAS:GWAS:GWASDATA_PREP:MERGE_PCA (1)
+Jul-31 14:03:00.407 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 12; name: LONGWAS:GWAS:GWASDATA_PREP:MERGE_PCA (3); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/c2/6326ebaf5d1d96dc36ce8e6fecdbb1]
+Jul-31 14:03:00.411 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:00.412 [Task submitter] INFO  nextflow.Session - [16/40558c] Submitted process > LONGWAS:GWAS:GWASDATA_PREP:EXPORT_PLINK (1)
+Jul-31 14:03:05.894 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 10; name: LONGWAS:GWAS:GWASDATA_PREP:MERGE_PCA (1); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/72/72628ed95d00ff79712e06981b1b80]
+Jul-31 14:03:05.898 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:05.900 [Task submitter] INFO  nextflow.Session - [ce/9a5c5b] Submitted process > LONGWAS:GWAS:GWASDATA_PREP:EXPORT_PLINK (2)
+Jul-31 14:03:10.516 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 13; name: LONGWAS:GWAS:GWASDATA_PREP:EXPORT_PLINK (1); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/16/40558c48fb64d50054d81816f48079]
+Jul-31 14:03:10.523 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:10.524 [Task submitter] INFO  nextflow.Session - [b3/f54466] Submitted process > LONGWAS:GWAS:GWASDATA_PREP:EXPORT_PLINK (3)
+Jul-31 14:03:15.862 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 14; name: LONGWAS:GWAS:GWASDATA_PREP:EXPORT_PLINK (2); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/ce/9a5c5b4931390884829d0a16057501]
+Jul-31 14:03:20.524 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 15; name: LONGWAS:GWAS:GWASDATA_PREP:EXPORT_PLINK (3); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/b3/f5446684d696745a65567849782ae5]
+Jul-31 14:03:20.565 [Actor Thread 5] INFO  nextflow.Nextflow - Running GWAS GLM for chr5 in cohort EUR_intermediate with covariates SEX,age_at_baseline
+Jul-31 14:03:20.566 [Actor Thread 11] INFO  nextflow.Nextflow - Running GWAS GLM for chr1 in cohort EUR_control with covariates SEX,age_at_baseline
+Jul-31 14:03:20.567 [Actor Thread 7] INFO  nextflow.Nextflow - Running GWAS GLM for chr2 in cohort EUR_intermediate with covariates SEX,age_at_baseline
+Jul-31 14:03:20.567 [Actor Thread 10] INFO  nextflow.Nextflow - Running GWAS GLM for chr1 in cohort EUR_intermediate with covariates SEX,age_at_baseline
+Jul-31 14:03:20.567 [Actor Thread 15] INFO  nextflow.Nextflow - Running GWAS GLM for chr6 in cohort EUR_control with covariates SEX,age_at_baseline
+Jul-31 14:03:20.568 [Actor Thread 6] INFO  nextflow.Nextflow - Running GWAS GLM for chr2 in cohort EUR_affected with covariates SEX,age_at_baseline
+Jul-31 14:03:20.568 [Actor Thread 13] INFO  nextflow.Nextflow - Running GWAS GLM for chr6 in cohort EUR_intermediate with covariates SEX,age_at_baseline
+Jul-31 14:03:20.569 [Actor Thread 14] INFO  nextflow.Nextflow - Running GWAS GLM for chr4 in cohort EUR_intermediate with covariates SEX,age_at_baseline
+Jul-31 14:03:20.570 [Actor Thread 9] INFO  nextflow.Nextflow - Running GWAS GLM for chr1 in cohort EUR_affected with covariates SEX,age_at_baseline
+Jul-31 14:03:20.571 [Actor Thread 8] INFO  nextflow.Nextflow - Running GWAS GLM for chr2 in cohort EUR_control with covariates SEX,age_at_baseline
+Jul-31 14:03:20.571 [Actor Thread 19] INFO  nextflow.Nextflow - Running GWAS GLM for chr3 in cohort EUR_control with covariates SEX,age_at_baseline
+Jul-31 14:03:20.572 [Actor Thread 4] INFO  nextflow.Nextflow - Running GWAS GLM for chr5 in cohort EUR_affected with covariates SEX,age_at_baseline
+Jul-31 14:03:20.573 [Actor Thread 16] INFO  nextflow.Nextflow - Running GWAS GLM for chr3 in cohort EUR_intermediate with covariates SEX,age_at_baseline
+Jul-31 14:03:20.573 [Actor Thread 23] INFO  nextflow.Nextflow - Running GWAS GLM for chr3 in cohort EUR_affected with covariates SEX,age_at_baseline
+Jul-31 14:03:20.574 [Actor Thread 20] INFO  nextflow.Nextflow - Running GWAS GLM for chr4 in cohort EUR_control with covariates SEX,age_at_baseline
+Jul-31 14:03:20.615 [Actor Thread 22] INFO  nextflow.Nextflow - Running GWAS GLM for chr4 in cohort EUR_affected with covariates SEX,age_at_baseline
+Jul-31 14:03:20.618 [Actor Thread 12] INFO  nextflow.Nextflow - Running GWAS GLM for chr6 in cohort EUR_affected with covariates SEX,age_at_baseline
+Jul-31 14:03:20.621 [Actor Thread 21] INFO  nextflow.Nextflow - Running GWAS GLM for chr5 in cohort EUR_control with covariates SEX,age_at_baseline
+Jul-31 14:03:20.662 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:20.663 [Task submitter] INFO  nextflow.Session - [da/467298] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (4)
+Jul-31 14:03:21.653 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 19; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (4); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/da/4672984f1e247eef04143bda006446]
+Jul-31 14:03:21.657 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:21.658 [Task submitter] INFO  nextflow.Session - [a1/ae2ccb] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (7)
+Jul-31 14:03:22.651 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 22; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (7); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/a1/ae2ccb315c87da3940c74f9279a36f]
+Jul-31 14:03:22.665 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:22.665 [Task submitter] INFO  nextflow.Session - [47/699739] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (16)
+Jul-31 14:03:23.635 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 31; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (16); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/47/699739355150c3d8ad0d826943e3f0]
+Jul-31 14:03:23.645 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:23.646 [Task submitter] INFO  nextflow.Session - [14/46b6df] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (10)
+Jul-31 14:03:24.567 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 25; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (10); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/14/46b6df9c6680d4ea7c78abc2ee0305]
+Jul-31 14:03:24.571 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:24.574 [Task submitter] INFO  nextflow.Session - [e8/885320] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (14)
+Jul-31 14:03:25.424 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 29; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (14); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/e8/8853208fd535a2d2187aa7ca7fbdc4]
+Jul-31 14:03:25.428 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:25.433 [Task submitter] INFO  nextflow.Session - [bc/b40cbc] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (18)
+Jul-31 14:03:25.841 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 33; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (18); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/bc/b40cbc66d81f9862b01323be2dd46c]
+Jul-31 14:03:25.851 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:25.853 [Task submitter] INFO  nextflow.Session - [c5/7bde40] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (5)
+Jul-31 14:03:26.710 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 20; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (5); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/c5/7bde40c79928fc8b89a147f363edfb]
+Jul-31 14:03:26.713 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:26.716 [Task submitter] INFO  nextflow.Session - [3a/7eef48] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (11)
+Jul-31 14:03:27.568 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 26; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (11); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/3a/7eef486cffdd97d622139e08307faf]
+Jul-31 14:03:27.572 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:27.574 [Task submitter] INFO  nextflow.Session - [c2/2f73a1] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (15)
+Jul-31 14:03:28.423 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 30; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (15); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/c2/2f73a18f7770e594ccafbdb5b7817c]
+Jul-31 14:03:28.426 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:28.429 [Task submitter] INFO  nextflow.Session - [d1/c054ac] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (6)
+Jul-31 14:03:29.297 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 21; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (6); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/d1/c054ac24141d56dcb45269ee64b1e4]
+Jul-31 14:03:29.303 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:29.304 [Task submitter] INFO  nextflow.Session - [45/23907f] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (13)
+Jul-31 14:03:30.200 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 28; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (13); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/45/23907f65eab37724657404fe2db2eb]
+Jul-31 14:03:30.204 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:30.206 [Task submitter] INFO  nextflow.Session - [dd/41c487] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (12)
+Jul-31 14:03:30.698 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 27; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (12); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/dd/41c4872dac97980e79f2027c4947fe]
+Jul-31 14:03:30.702 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:30.705 [Task submitter] INFO  nextflow.Session - [c3/fc3a30] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (17)
+Jul-31 14:03:31.670 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 32; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (17); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/c3/fc3a30c273a1d7b6e08679072fd3ad]
+Jul-31 14:03:31.685 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:31.686 [Task submitter] INFO  nextflow.Session - [ba/ab1375] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (2)
+Jul-31 14:03:32.680 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 17; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (2); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/ba/ab1375d933794312650b24fefede08]
+Jul-31 14:03:32.684 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:32.685 [Task submitter] INFO  nextflow.Session - [2d/9628e7] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (8)
+Jul-31 14:03:33.544 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 23; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (8); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/2d/9628e7950e090545c18dc1a594b049]
+Jul-31 14:03:33.548 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:33.549 [Task submitter] INFO  nextflow.Session - [6c/a35821] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (9)
+Jul-31 14:03:34.580 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 24; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (9); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/6c/a35821e8cd6df9b092c663a06be4ce]
+Jul-31 14:03:34.585 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:34.585 [Task submitter] INFO  nextflow.Session - [e9/fcf350] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (1)
+Jul-31 14:03:35.584 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 16; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (1); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/e9/fcf350e407b70cbbc20769dddbf397]
+Jul-31 14:03:35.588 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:35.589 [Task submitter] INFO  nextflow.Session - [11/97cc47] Submitted process > LONGWAS:GWAS:GWAS_RUN:GWASGLM (3)
+Jul-31 14:03:36.024 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 18; name: LONGWAS:GWAS:GWAS_RUN:GWASGLM (3); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/11/97cc4727af65564a91823ce49b8a4d]
+Jul-31 14:03:36.039 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:36.040 [Task submitter] INFO  nextflow.Session - [82/bfa345] Submitted process > LONGWAS:GWAS:SAVE_RESULTS:SAVEGWAS (1)
+Jul-31 14:03:36.043 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:36.043 [Task submitter] INFO  nextflow.Session - [f6/2f3a00] Submitted process > LONGWAS:GWAS:SAVE_RESULTS:SAVEGWAS (3)
+Jul-31 14:03:36.058 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-31 14:03:36.059 [Task submitter] INFO  nextflow.Session - [08/ad7543] Submitted process > LONGWAS:GWAS:SAVE_RESULTS:SAVEGWAS (2)
+Jul-31 14:03:36.719 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 36; name: LONGWAS:GWAS:SAVE_RESULTS:SAVEGWAS (3); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/f6/2f3a0090a77ef2580cb8fdf4da6b06]
+Jul-31 14:03:36.811 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 34; name: LONGWAS:GWAS:SAVE_RESULTS:SAVEGWAS (1); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/82/bfa345e81c24c71412a1c8fd3d9759]
+Jul-31 14:03:36.873 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 35; name: LONGWAS:GWAS:SAVE_RESULTS:SAVEGWAS (2); status: COMPLETED; exit: 0; error: -; workDir: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/08/ad75439276b0137ee0e5773f123fc9]
+Jul-31 14:03:36.878 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-31 14:03:36.980 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Jul-31 14:03:36.981 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-31 14:03:36.994 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Jul-31 14:03:36.996 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Jul-31 14:03:37.006 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=28; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=2m 40s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=3; peakCpus=6; peakMemory=12 GB; ]
+Jul-31 14:03:37.013 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-31 14:03:37.039 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Jul-31 14:03:37.040 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

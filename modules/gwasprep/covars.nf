@@ -3,8 +3,8 @@ process COMPUTE_PCA {
   scratch true
   label 'large_mem'
 
-  storeDir "${STORE_DIR}/${params.dataset}/p3_PCA_QC/"
-  publishDir "${OUTPUT_DIR}/${params.dataset}/LOGS/COMPUTE_PCA_${params.datetime}/", mode: 'copy', overwrite: true, pattern: "*.log"
+  storeDir "${params.STORE_DIR}/${params.dataset}/p3_PCA_QC/"
+  publishDir "${params.OUTPUT_DIR}/${params.dataset}/LOGS/COMPUTE_PCA_${params.datetime}/", mode: 'copy', overwrite: true, pattern: "*.log"
 
   input:
     each path(samplelist) //from gwas_samplelist.flatten()
@@ -17,6 +17,7 @@ process COMPUTE_PCA {
     //file "*.log", emit: logs
 
   script:
+    log.info "Running PCA for ${samplelist.getName()}"
     def m = []
     def cohort = ""
     cohort = samplelist.getName()
@@ -59,7 +60,9 @@ process MERGE_PCA {
      import pandas as pd
      import time   
      import os
-     
+
+     print(f"Merging PCA results for ${samplelist.getName()}")
+
      print(os.listdir())
      sample_fn = "${samplelist.getName()}"
      cohort = sample_fn[:-(len('_filtered.tsv'))]

@@ -1,0 +1,9 @@
++ KEY=EUR_intermediate_y
++ glm_phenocovar.py --pheno_covar /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/e4/a804a117fe8d236b530d45d4071cf1/EUR_intermediate_analyzed.tsv --phenname y --covname 'SEX age_at_baseline'
++ plink2 --pfile chr2 --glm hide-covar omit-ref cols=+beta,+a1freq --pheno pheno.tsv --pheno-name y --covar covar.tsv --covar-name SEX,age_at_baseline --covar-variance-standardize --keep pheno.tsv --output-chr chrM --mac 20 --hwe 1e-6 --threads 4 --memory 12288 --out EUR_intermediate_chr2.null
++ set +u
++ set +e
++ cd /tmp/nxf.uFRqRcAYHn
++ echo ''
++ echo KEY=EUR_intermediate_y
++ echo /KEY/

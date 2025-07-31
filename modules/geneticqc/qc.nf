@@ -36,6 +36,7 @@ process GENETICQC {
     tuple val(vSimple), val("${output}"), emit: snpchunks_names //into p1_run_chunklist_ch
 
   script:
+  log.info "Running GENETICQC for ${vSimple} with input file ${fOrig} and split file ${fSplit}"
   def chrnum = ""
   def vPart = ""
   def prefix = ""
@@ -76,7 +77,6 @@ process GENETICQC {
     ${params.assembly} \
     ${chrnum} \
     ${prefix}
-  
   plink2 --pfile ${output} \
         --make-bed \
         --out ${output}

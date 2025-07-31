@@ -2,7 +2,7 @@
 process RAWFILE_EXPORT {
   scratch true
   label 'small'
-  publishDir "${OUTPUT_DIR}/${params.dataset}/LOGS/RAWFILE_EXPORT_${params.datetime}/", mode: 'copy', overwrite: true, pattern: "*.log"
+  publishDir "${params.OUTPUT_DIR}/${params.dataset}/LOGS/RAWFILE_EXPORT_${params.datetime}/", mode: 'copy', overwrite: true, pattern: "*.log"
 
   input:
     tuple val(fSimple), path(plog), path(pgen), path(psam), path(pvar), path(plink_chunk) //from p3_plink_chunks
@@ -24,6 +24,8 @@ process RAWFILE_EXPORT {
     def outfile = "${cohort}_${fSimple}"
 
     """
+    echo "Exporting raw file for ${fSimple} with sample list ${samplelist}"
+    echo "Cohort: ${cohort}"
     set -x
     from=\$(cat $plink_chunk | cut -f 1)
     to=\$(cat $plink_chunk | cut -f 2)
@@ -59,7 +61,8 @@ process EXPORT_PLINK {
     path samplelist //from gwas_samplelist_plink.flatten()
     path x, stageAs: 'phenotypes.tsv' //from "${params.phenofile}"
   output:
-    path "*_analyzed.tsv" optional true //into plink_samplelist
+  // DSL2 syntax says optional true 
+    file "*_analyzed.tsv" // optional true //into plink_samplelist
 
   script:
     //println "Samplelist: ${samplelist}"

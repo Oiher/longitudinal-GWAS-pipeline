@@ -1,0 +1,183 @@
+#!/bin/bash
+### ---
+### name: 'LONGWAS:GWAS:SAVE_RESULTS:SAVEGWAS (1)'
+### container: 'amcalejandro/longgwas:v2'
+### outputs:
+### - 'EUR_intermediate_chr3.null.y.glm.linear'
+### - 'EUR_intermediate_chr1.null.y.glm.linear'
+### - 'EUR_intermediate_chr4.null.y.glm.linear'
+### - 'EUR_intermediate_chr5.null.y.glm.linear'
+### - 'EUR_intermediate_chr2.null.y.glm.linear'
+### - 'EUR_intermediate_chr6.null.y.glm.linear'
+### - 'EUR_intermediate_y_allresults.tsv'
+### ...
+set -e
+set -u
+NXF_DEBUG=${NXF_DEBUG:=0}; [[ $NXF_DEBUG > 1 ]] && set -x
+NXF_ENTRY=${1:-nxf_main}
+
+nxf_container_env() {
+cat << EOF
+export RESOURCE_DIR="/home/oiher/longGWAS/longitudinal-GWAS-pipeline/files"
+export OUTPUT_DIR="/home/oiher/longGWAS/longitudinal-GWAS-pipeline/files/longGWAS_pipeline/results"
+export STORE_DIR="/home/oiher/longGWAS/longitudinal-GWAS-pipeline/files/longGWAS_pipeline/results/cache"
+export ADDI_QC_PIPELINE="/usr/src/ADDI-GWAS-QC-pipeline/addi_qc_pipeline.py"
+export PATH="\$PATH:/home/oiher/longGWAS/longitudinal-GWAS-pipeline/bin"
+EOF
+}
+
+nxf_sleep() {
+  sleep $1 2>/dev/null || sleep 1;
+}
+
+nxf_date() {
+    local ts=$(date +%s%3N);
+    if [[ ${#ts} == 10 ]]; then echo ${ts}000
+    elif [[ $ts == *%3N ]]; then echo ${ts/\%3N/000}
+    elif [[ $ts == *3N ]]; then echo ${ts/3N/000}
+    elif [[ ${#ts} == 13 ]]; then echo $ts
+    else echo "Unexpected timestamp value: $ts"; exit 1
+    fi
+}
+
+nxf_env() {
+    echo '============= task environment ============='
+    env | sort | sed "s/\(.*\)AWS\(.*\)=\(.\{6\}\).*/\1AWS\2=\3xxxxxxxxxxxxx/"
+    echo '============= task output =================='
+}
+
+nxf_kill() {
+    declare -a children
+    while read P PP;do
+        children[$PP]+=" $P"
+    done < <(ps -e -o pid= -o ppid=)
+
+    kill_all() {
+        [[ $1 != $$ ]] && kill $1 2>/dev/null || true
+        for i in ${children[$1]:=}; do kill_all $i; done
+    }
+
+    kill_all $1
+}
+
+nxf_mktemp() {
+    local base=${1:-/tmp}
+    mkdir -p "$base"
+    if [[ $(uname) = Darwin ]]; then mktemp -d $base/nxf.XXXXXXXXXX
+    else TMPDIR="$base" mktemp -d -t nxf.XXXXXXXXXX
+    fi
+}
+
+nxf_fs_copy() {
+  local source=$1
+  local target=$2
+  local basedir=$(dirname $1)
+  mkdir -p $target/$basedir
+  cp -fRL $source $target/$basedir
+}
+
+nxf_fs_move() {
+  local source=$1
+  local target=$2
+  local basedir=$(dirname $1)
+  mkdir -p $target/$basedir
+  mv -f $source $target/$basedir
+}
+
+nxf_fs_rsync() {
+  rsync -rRl $1 $2
+}
+
+nxf_fs_rclone() {
+  rclone copyto $1 $2/$1
+}
+
+nxf_fs_fcp() {
+  fcp $1 $2/$1
+}
+
+on_exit() {
+    local last_err=$?
+    local exit_status=${nxf_main_ret:=0}
+    [[ ${exit_status} -eq 0 && ${nxf_unstage_ret:=0} -ne 0 ]] && exit_status=${nxf_unstage_ret:=0}
+    [[ ${exit_status} -eq 0 && ${last_err} -ne 0 ]] && exit_status=${last_err}
+    printf -- $exit_status > /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/50/2dfbbcd779bbbddf22ffde5737d509/.exitcode
+    set +u
+    (sudo -n true && sudo rm -rf "$NXF_SCRATCH" || rm -rf "$NXF_SCRATCH")&>/dev/null || true
+    docker rm $NXF_BOXID &>/dev/null || true
+    exit $exit_status
+}
+
+on_term() {
+    set +e
+    docker stop $NXF_BOXID
+}
+
+nxf_launch() {
+    docker run -i --cpu-shares 2048 -e "NXF_TASK_WORKDIR" -v $NXF_SCRATCH:/tmp -v /home/oiher/longGWAS/longitudinal-GWAS-pipeline:/home/oiher/longGWAS/longitudinal-GWAS-pipeline -v "$NXF_TASK_WORKDIR":"$NXF_TASK_WORKDIR" -w "$NXF_TASK_WORKDIR" --name $NXF_BOXID amcalejandro/longgwas:v2 /bin/bash -c "eval $(nxf_container_env); /bin/bash -ue /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/50/2dfbbcd779bbbddf22ffde5737d509/.command.sh"
+}
+
+nxf_stage() {
+    true
+    # stage input files
+    rm -f EUR_intermediate_chr1.null.y.glm.linear
+    rm -f EUR_intermediate_chr6.null.y.glm.linear
+    rm -f EUR_intermediate_chr5.null.y.glm.linear
+    rm -f EUR_intermediate_chr3.null.y.glm.linear
+    rm -f EUR_intermediate_chr2.null.y.glm.linear
+    rm -f EUR_intermediate_chr4.null.y.glm.linear
+    ln -s /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/6f/971df1e78b428ac4b52ffda084f083/EUR_intermediate_chr1.null.y.glm.linear EUR_intermediate_chr1.null.y.glm.linear
+    ln -s /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/e4/d06e951a752128daeffc5ce58af2c5/EUR_intermediate_chr6.null.y.glm.linear EUR_intermediate_chr6.null.y.glm.linear
+    ln -s /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/ad/871e67845fee90f6a9401523b9e629/EUR_intermediate_chr5.null.y.glm.linear EUR_intermediate_chr5.null.y.glm.linear
+    ln -s /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/26/f7bbbbbea2500e9f0f8c03fbea29e5/EUR_intermediate_chr3.null.y.glm.linear EUR_intermediate_chr3.null.y.glm.linear
+    ln -s /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/bb/e2180d3203ebb771cc286cc960fa47/EUR_intermediate_chr2.null.y.glm.linear EUR_intermediate_chr2.null.y.glm.linear
+    ln -s /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/7b/4e82fa60a04f5509b6c30c2dc5656f/EUR_intermediate_chr4.null.y.glm.linear EUR_intermediate_chr4.null.y.glm.linear
+}
+
+nxf_unstage_outputs() {
+    true
+    IFS=$'\n'
+    for name in $(eval "ls -1d EUR_intermediate_chr3.null.y.glm.linear EUR_intermediate_chr1.null.y.glm.linear EUR_intermediate_chr4.null.y.glm.linear EUR_intermediate_chr5.null.y.glm.linear EUR_intermediate_chr2.null.y.glm.linear EUR_intermediate_chr6.null.y.glm.linear EUR_intermediate_y_allresults.tsv" | sort | uniq); do
+        nxf_fs_copy "$name" /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/50/2dfbbcd779bbbddf22ffde5737d509
+    done
+    unset IFS
+}
+
+nxf_unstage_controls() {
+    true
+    cp .command.out /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/50/2dfbbcd779bbbddf22ffde5737d509/.command.out || true
+    cp .command.err /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/50/2dfbbcd779bbbddf22ffde5737d509/.command.err || true
+}
+
+nxf_unstage() {
+    if [[ ${nxf_main_ret:=0} == 0 ]]; then
+        (set -e -o pipefail; (nxf_unstage_outputs | tee -a .command.out) 3>&1 1>&2 2>&3 | tee -a .command.err)
+        nxf_unstage_ret=$?
+    fi
+    nxf_unstage_controls
+}
+
+nxf_main() {
+    trap on_exit EXIT
+    trap on_term TERM INT USR2
+    trap '' USR1
+
+    [[ "${NXF_CHDIR:-}" ]] && cd "$NXF_CHDIR"
+    export NXF_BOXID="nxf-$(dd bs=18 count=1 if=/dev/urandom 2>/dev/null | base64 | tr +/ 0A | tr -d '\r\n')"
+    NXF_SCRATCH="$(set +u; nxf_mktemp $TMPDIR)"
+    [[ $NXF_DEBUG > 0 ]] && nxf_env
+    touch /home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/50/2dfbbcd779bbbddf22ffde5737d509/.command.begin
+    set +u
+    set -u
+    [[ $NXF_SCRATCH ]] && cd $NXF_SCRATCH
+    export NXF_TASK_WORKDIR="$PWD"
+    nxf_stage
+
+    set +e
+    (set -o pipefail; (nxf_launch | tee .command.out) 3>&1 1>&2 2>&3 | tee .command.err) &
+    pid=$!
+    wait $pid || nxf_main_ret=$?
+    nxf_unstage
+}
+
+$NXF_ENTRY

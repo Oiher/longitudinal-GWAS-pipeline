@@ -1,7 +1,7 @@
 process MERGER_SPLITS {
   scratch true
-  storeDir "${STORE_DIR}/${params.dataset}/p1_run_cache"
-  publishDir "${OUTPUT_DIR}/${params.dataset}/LOGS/MERGER_SPLITS_${params.datetime}/", mode: 'copy', overwrite: true, pattern: "*.log"
+  storeDir "${params.STORE_DIR}/${params.dataset}/p1_run_cache"
+  publishDir "${params.OUTPUT_DIR}/${params.dataset}/LOGS/MERGER_SPLITS_${params.datetime}/", mode: 'copy', overwrite: true, pattern: "*.log"
   label 'small'
 
   input:
@@ -13,6 +13,7 @@ process MERGER_SPLITS {
     //file "*.log"
   script:
     vSimple = mergelist.getSimpleName()
+    log.info "Merging chromosome splits, params.chunk_flag: ${params.chunk_flag}"
     if (params.chunk_flag) {
       """
       # run merge command on tmp list
@@ -49,9 +50,9 @@ process MERGER_SPLITS {
 
 process MERGER_CHRS {
   scratch true
-  storeDir "${STORE_DIR}/${params.dataset}/p2_merged_cache"
+  storeDir "${params.STORE_DIR}/${params.dataset}/p2_merged_cache"
   //publishDir "${OUTPUT_DIR}/${params.out}_${params.datetime}/logs", mode: 'copy', overwrite: true, pattern: "*.log"
-  publishDir "${OUTPUT_DIR}/${params.dataset}/LOGS/MERGER_CHRS_LOGS_${params.datetime}/logs", mode: 'copy', overwrite: true, pattern: "*.log"
+  publishDir "${params.OUTPUT_DIR}/${params.dataset}/LOGS/MERGER_CHRS_LOGS_${params.datetime}/logs", mode: 'copy', overwrite: true, pattern: "*.log"
 
   label 'large_mem'
 

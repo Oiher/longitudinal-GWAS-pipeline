@@ -1,0 +1,10 @@
+
+RUNNING: callrate_prune
+
+
+RUNNING: het_prune
+
+callrate_prune Passed!
+het_prune Passed!
+ancestry_prune Passed!
+king_prune Passed!

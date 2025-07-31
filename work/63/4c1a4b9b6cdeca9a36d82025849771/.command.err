@@ -1,0 +1,10 @@
+++ cat allchr_SURV_CPH_p2in.1.txt
+++ cut -f 1
++ from=chr1:953279:T:C
+++ cat allchr_SURV_CPH_p2in.1.txt
+++ cut -f 2
++ to=chr1:248864040:A:C
++ echo chr1:953279:T:C
++ echo chr1:248864040:A:C
++ nameout=EUR_control_chr1_chr1:953279:T:C_chr1:248864040:A:C
++ plink2 --pfile chr1 --keep EUR_control_filtered.pca.tsv --export A --from chr1:953279:T:C --to chr1:248864040:A:C --mac 20 --update-sex EUR_control_filtered.pca.tsv --pheno EUR_control_filtered.pca.tsv --pheno-col-nums 4 --hwe 1e-6 --out EUR_control_chr1_chr1:953279:T:C_chr1:248864040:A:C --threads 2 --memory 6144

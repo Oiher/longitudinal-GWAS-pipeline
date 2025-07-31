@@ -1,0 +1,8 @@
++ KEY=EUR_affected_surv_y
++ survival.R --rawfile EUR_affected_chr3_chr3:63289:A:G_chr3:198073373:T:C.raw --pheno phenotypes.tsv --covar EUR_affected_filtered.pca.tsv --covar-name 'SEX age_at_baseline' --pheno-name surv_y --out EUR_affected_chr3_chr3:63289:A:G_chr3:198073373:T:C.null.coxph
++ set +u
++ set +e
++ cd /tmp/nxf.Tg080hehbS
++ echo ''
++ echo KEY=EUR_affected_surv_y
++ echo /KEY/

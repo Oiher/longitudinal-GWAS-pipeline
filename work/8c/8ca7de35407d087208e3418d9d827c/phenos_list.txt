@@ -1,0 +1,3 @@
+intermediate
+control
+affected

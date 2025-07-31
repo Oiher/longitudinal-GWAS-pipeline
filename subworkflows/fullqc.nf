@@ -12,6 +12,7 @@ workflow DOQC {
         cache
     
     main:
+    log.info "Fetching input files and cache..."
         input_check_ch
             .join(cache, remainder: true)
             .filter{ fSimple, fOrig, fCache -> fCache == null }
@@ -95,7 +96,6 @@ workflow DOQC {
         // DO ALL THE MERGING AFTER SPLITTING TO HANDLE BIG DATA MEMORY HUNTING
         //MERGER_SPLITS(chunknames, GENETICQC.out.snpchunks_qc.collect())
         MERGER_SPLITS(chunknames, GENETICQC.out.snpchunks_merge.collect())
-        
         MERGER_SPLITS.out
             .collect()
             .flatten()
@@ -128,14 +128,12 @@ workflow DOQC {
         chrsqced
             .map{ vSimple, f -> file(f) }
             .set{ chrfiles }
-
         MERGER_CHRS(list_files_merge  , chrfiles.collect())
         MERGER_CHRS.out
             .flatten()
             .filter{ fName -> ["pgen", "pvar", "psam"].contains( fName.getExtension() ) }
             .collect()
             .set{  input_compute_pca }
-
         // Run the GWAS QC
         GWASQC(MERGER_CHRS.out)
 

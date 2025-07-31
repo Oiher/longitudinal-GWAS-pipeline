@@ -2,7 +2,7 @@ process MANHATTAN {
   scratch true
   label 'medium'
 
-  publishDir "${OUTPUT_DIR}/${params.dataset}/RESULTS/${model}_MANHATTAN_${params.datetime}", mode: 'copy', overwrite: true
+  publishDir "${params.OUTPUT_DIR}/${params.dataset}/RESULTS/${model}_MANHATTAN_${params.datetime}", mode: 'copy', overwrite: true
 
   input:
     each x
@@ -11,6 +11,11 @@ process MANHATTAN {
     path "*.png"
 
   script:
+  def cohort = x.getName() // get filename, not full path (e.g. EUR_intermediate_y_allresults.tsv)
+  // Extract cohort name from filename
+  def m = cohort =~ /(.*)_.*_allresults.tsv/
+  def result = m ? m[0][1] : null
+  log.info "Creating Manhattan Plot for ${result}"
   """
   #!/usr/bin/env python3
   import pandas as pd

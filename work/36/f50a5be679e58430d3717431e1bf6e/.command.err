@@ -1,0 +1,8 @@
++ KEY=EUR_intermediate_surv_y
++ survival.R --rawfile EUR_intermediate_chr2_chr2:151464:T:C_chr2:242059222:T:C.raw --pheno phenotypes.tsv --covar EUR_intermediate_filtered.pca.tsv --covar-name 'SEX age_at_baseline' --pheno-name surv_y --out EUR_intermediate_chr2_chr2:151464:T:C_chr2:242059222:T:C.null.coxph
++ set +u
++ set +e
++ cd /tmp/nxf.mMIu4A33gD
++ echo ''
++ echo KEY=EUR_intermediate_surv_y
++ echo /KEY/

@@ -1,0 +1,42 @@
+Namespace(covname='SEX age_at_baseline', phenname='y', pheno_covar='/home/oiher/longGWAS/longitudinal-GWAS-pipeline/work/cb/ecc6ed015937dd71f23888fdc02dde/EUR_affected_analyzed.tsv')
+covar and pheno files successfully generated
+PLINK v2.00a3LM 64-bit Intel (20 Sep 2021)     www.cog-genomics.org/plink/2.0/
+(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to EUR_affected_chr3.null.log.
+Options in effect:
+  --covar covar.tsv
+  --covar-name SEX,age_at_baseline
+  --covar-variance-standardize
+  --glm hide-covar omit-ref cols=+beta,+a1freq
+  --hwe 1e-6
+  --keep pheno.tsv
+  --mac 20
+  --memory 12288
+  --out EUR_affected_chr3.null
+  --output-chr chrM
+  --pfile chr3
+  --pheno pheno.tsv
+  --pheno-name y
+  --threads 4
+
+Start time: Thu Jul 31 12:41:04 2025
+15696 MiB RAM detected; reserving 12288 MiB for main workspace.
+Using up to 4 compute threads.
+808 samples (0 females, 0 males, 808 ambiguous; 808 founders) loaded from
+chr3.psam.
+1651 variants loaded from chr3.pvar.
+1 quantitative phenotype loaded (217 values).
+--keep: 217 samples remaining.
+2 covariates loaded from covar.tsv.
+217 samples (0 females, 0 males, 217 ambiguous; 217 founders) remaining after
+main filters.
+217 quantitative phenotype values remaining after main filters.
+--covar-variance-standardize: 2 covariates transformed.
+Calculating allele frequencies... 0%done.
+--hwe: 0 variants removed due to Hardy-Weinberg exact test (founders only).
+57 variants removed due to allele frequency threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+1594 variants remaining after main filters.
+--glm linear regression on phenotype 'y': 0%done.
+Results written to EUR_affected_chr3.null.y.glm.linear .
+End time: Thu Jul 31 12:41:04 2025

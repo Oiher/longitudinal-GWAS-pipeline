@@ -1,0 +1,34 @@
+---
+# Input files
+input: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/example/genotype/chr[4-6].vcf
+covarfile: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/example/covariates.tsv
+phenofile: /home/oiher/longGWAS/longitudinal-GWAS-pipeline/example/phenotype.cs.tsv
+
+#Variables names
+pheno_name: y
+covariates: "SEX age_at_baseline"
+study_col: study_arm
+# time_col: study_days
+
+# Model variables
+longitudinal_flag: false
+survival_flag: false
+linear_flag: true
+chunk_flag: true
+chunk_size: 60000
+plink_chunk_size: 10000
+# model: cph
+# out: output
+
+# Parameters for genetic QC
+r2thres: -9
+minor_allele_freq: "0.05"
+minor_allele_ct: "20"
+kinship: "0.177"
+ancestry: "EUR"
+assembly: "hg19"
+#Identifier for the input genotype files - useful to cache results
+dataset: "GLM_CS"
+
+# Generate manhattan with result files
+mh_plot: true

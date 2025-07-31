@@ -1,6 +1,6 @@
 process SAVEGWAS {
   scratch true
-  publishDir "${OUTPUT_DIR}/${params.dataset}/RESULTS/${model}_${params.datetime}", mode: 'copy', overwrite: true
+  publishDir "${params.OUTPUT_DIR}/${params.dataset}/RESULTS/${model}_${params.datetime}", mode: 'copy', overwrite: true
 
   input:
     tuple val(pheno), path(sumstats)

@@ -1,0 +1,12 @@
+[[1]]
+[1] "SEX"             "age_at_baseline"
+
+          used (Mb) gc trigger  (Mb) max used  (Mb)
+Ncells 1550307 82.8    2734441 146.1  2243367 119.9
+Vcells 3318111 25.4    8388608  64.0  7253644  55.4
+[1] "finished loading data"
+[1] "Found 1760 SNPs"
+          used (Mb) gc trigger  (Mb) max used  (Mb)
+Ncells 1565152 83.6    2734441 146.1  2243367 119.9
+Vcells 3235271 24.7    8388608  64.0  7253644  55.4
+[1] "Base survival model Surv(tstart,tend,surv_y)~SEX+age_at_baseline"

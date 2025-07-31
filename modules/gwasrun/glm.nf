@@ -18,6 +18,7 @@ process GWASGLM {
     cohort = m[0][1]
     def outfile = "${cohort}_${fSimple}.${params.out}"
 
+    log.info "Running GWAS GLM for ${fSimple} in cohort ${cohort} with covariates ${covariates}"
     // def pheno_name = "y"
     // if (params.pheno_name != '') {
     //   pheno_name = "${params.pheno_name}"
@@ -27,7 +28,6 @@ process GWASGLM {
     """
     set -x
     KEY="${cohort}_${phenoname}"
-
     glm_phenocovar.py \
         --pheno_covar ${samplelist} \
         --phenname ${phenoname} \
