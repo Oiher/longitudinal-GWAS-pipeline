@@ -38,7 +38,7 @@ else
     bcftools norm -m-both ${FILE}.vcf.gz \
                   -Oz -o ${FILE}_split.vcf.gz --threads ${N} # split
     plink2 --threads ${N} \
-           --vcf ${FILE}_split.vcf.gz --make-pgen --allow-extra-chr --autosome-par --out ${FILE}_split
+           --vcf ${FILE}_split.vcf.gz --vcf-half-call m --make-pgen --allow-extra-chr --autosome-par --out ${FILE}_split
 fi
 
 # left-normalize using fasta file (hg38)
