@@ -7,8 +7,8 @@ process GWASGLM {
     each samplelist //from plink_samplelist
     each phenoname
   output:
-    tuple env(KEY), path("*.linear")
-    //path("*.linear")
+    tuple env(KEY), path("*.glm.*")
+    //path("*glm.linear") or path("*glm.logistic")
 
   script:
     def covariates = "${params.covariates}".replaceAll(/ /, ",")
